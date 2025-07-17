@@ -1,2 +1,3 @@
 # agent-protocol-security
-Aim to validate the security design (e.g. identity, authentication, authiorization) for agent protocols, including agent-to-other protocols (e.g. MCP), or agent-to-agent protocols (e.g. A2A)
+In recent years, AI agents have witnessed remarkable progress and are increasingly recognized as a pivotal force in various fields. Regarding agent protocols, they play a crucial role in enabling seamless communication between agents, external tools, and data sources. However, with the development of AI agents and their protocols, security has become a pressing concern.
+This repository is used for code collection of IETF Hackathon. In this hackathon we aim to validate the security design (e.g. identity, authentication, authiorization) for agent protocols, including agent-to-other protocols (e.g. MCP), or agent-to-agent protocols (e.g. A2A).
