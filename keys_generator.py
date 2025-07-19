@@ -1,8 +1,7 @@
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey 
 from cryptography.hazmat.primitives import serialization 
-from cryptography.exceptions import InvalidSignature 
-import binascii
+from cryptography.exceptions import InvalidSignature
 
 def generate_raw_keys():
   try:
@@ -46,3 +45,7 @@ def verify_rand(raw_public_key_str: str, rand: int, signed_rand: bytes):
     return False # invalid
   
   return True # valid
+
+if __name__ == '__main__':
+  pk, sk = generate_raw_keys()
+  print(pk)
