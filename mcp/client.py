@@ -70,7 +70,6 @@ async def main():
     server_script_path = './mcp/server.py'
 
     client = MCP_Client()
-    client.get_did()
 
     try:
         await client.connect_to_server(server_script_path)
