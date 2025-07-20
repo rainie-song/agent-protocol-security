@@ -1,14 +1,29 @@
 from mcp.server.fastmcp import FastMCP
 import datetime
 
+from keys_generator import generate_raw_keys
+import idm
+
 mcp = FastMCP(name='Toolbox')
+
+DID = None
+
+def get_did():
+    public_key, secret_key = generate_raw_keys()
+    data = {
+        'type': 'toolbox',
+        'pk': public_key,
+        'pktype': 'ed25519',
+    }
+    global DID
+    DID = idm.get_did(data)
+
 
 # AI Tools
 @mcp.tool()
 def get_current_date():
     """
     Get today's date. Get the current date.
-
 
     Return:
         str: The current local date in "YYYY-MM-DD" (YEAR-MONTH-DATE) format.
@@ -29,6 +44,10 @@ def get_current_time():
 
 
 if __name__ == "__main__":
+    # Request for server identity from IDM
+    get_did()
+    print(DID)
+
     # Start MCP Server
     print('Running server with stdio transport')
     mcp.run(transport='stdio')
