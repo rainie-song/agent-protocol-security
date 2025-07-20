@@ -16,11 +16,13 @@ class MCP_Client:
         self.model = None
 
         # Security
+        self.vc = None
         self.did = None
         self.secret_key = None
         self.public_key = None
 
         self.get_did()
+        self.get_vc()
 
     def get_did(self):
         print('Generating keys...')
@@ -37,8 +39,22 @@ class MCP_Client:
         self.did = idm.get_did(data)
         print(self.did)
 
+    def get_vc(self):
+        print('\nGetting VC...')
+        id = self.did['id']
+        data = {
+            'subjectID': id,
+            'content': 'callTools',
+            'keyType': 'Ed25519',
+            'signType': 'asy',
+            'usage': 'authorization'
+        }
+
+        self.vc = idm.get_vc(data)
+        print(self.vc)
+
     async def connect_to_server(self, server_script_path: str):
-        print('Connecting to MCP Server...')
+        print('\nConnecting to MCP Server...')
         command = 'python'
 
         server_params = StdioServerParameters(

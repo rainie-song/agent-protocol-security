@@ -31,6 +31,17 @@ def sign_rand(raw_secret_key_str: str, rand: int):
   
   return signed_rand
 
+def sign_vc(raw_secret_key_str: str, vc: str):
+  sk_raw = bytes.fromhex(raw_secret_key_str)
+  # Get secret key using raw secret key bytes
+  secret_key = Ed25519PrivateKey.from_private_bytes(sk_raw)
+  # encode rand
+  encoded_rand = bytes(vc, "utf-8")
+  # sign rand with secret key
+  signed_rand = secret_key.sign(encoded_rand)
+  
+  return signed_rand
+
 def verify_rand(raw_public_key_str: str, rand: int, signed_rand: bytes):
   # get raw public key from public key string
   pk_raw = bytes.fromhex(raw_public_key_str)

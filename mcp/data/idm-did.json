@@ -1,0 +1,15 @@
+{
+  "id": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+  "type": "IDM",
+  "relatedID": "",
+  "authentication": {
+    "id": "did:ietf:8af13c13bfce4491aae251b10c4f4004#key-1",
+    "type": "ed25519",
+    "controller": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+    "publicKeyMultibase": "119a06cfeff1b9cd7168f2e3b400ec5fd2914da0e1e175e3581fd2246240732f"
+  },
+  "description": "",
+  "protocol": "",
+  "transparency": "",
+  "verifiableCredentialHash": ""
+}
