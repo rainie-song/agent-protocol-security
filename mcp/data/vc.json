@@ -1,0 +1,74 @@
+[
+  {
+    "id": "bc1e5ece-498b-4309-8837-b934ca5cb667",
+    "type": "VerifiableCredential",
+    "issuer": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+    "name": "attributeCredential",
+    "description": "authorization",
+    "validFrom": "2025-07-21 11:09:56.645448",
+    "validUntil": "2025-07-22 11:09:56.645448",
+    "credentialSubject": {
+      "id": "did:ietf:e23eb835e3794e79a8a0118336570469",
+      "claim": {
+        "service": "callTools"
+      }
+    },
+    "relatedVC": "",
+    "domain": "ietf",
+    "proof": {
+      "type": "DataIntegrityProof",
+      "verificationMethod": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+      "cryptoSuite": "Ed25519",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "f65bf59f67ebcc8bb835a3f17ddbd189f1843bc9f528a0b0287df9783b6db65983495a4fa1079ea7eac2462372de9277718d5aba895ce81e36ce0af332f0160b"
+    }
+  },
+  {
+    "id": "7766db9e-1c9a-4f54-b900-06ba1ed319b5",
+    "type": "VerifiableCredential",
+    "issuer": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+    "name": "attributeCredential",
+    "description": "authorization",
+    "validFrom": "2025-07-21 11:11:23.469556",
+    "validUntil": "2025-07-22 11:11:23.469556",
+    "credentialSubject": {
+      "id": "did:ietf:d74a0ffa2f64467b930ccc4e52c87e3e",
+      "claim": {
+        "service": "callTools"
+      }
+    },
+    "relatedVC": "",
+    "domain": "ietf",
+    "proof": {
+      "type": "DataIntegrityProof",
+      "verificationMethod": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+      "cryptoSuite": "Ed25519",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "92ec090c20fa6a74e36cb7bbf13555177fa2997f4e5b21b2fa541dda1ee5bbe5d2549009023e6b3f730e3706d48fa8b8461822dcead06d14bc7f552422afcc08"
+    }
+  },
+  {
+    "id": "b2f1af70-139e-4772-902b-7a04ef7de68e",
+    "type": "VerifiableCredential",
+    "issuer": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+    "name": "attributeCredential",
+    "description": "authorization",
+    "validFrom": "2025-07-21 11:11:52.473586",
+    "validUntil": "2025-07-22 11:11:52.473586",
+    "credentialSubject": {
+      "id": "did:ietf:c5e3242f24e2410a9b33e6b353ef77a4",
+      "claim": {
+        "service": "callTools"
+      }
+    },
+    "relatedVC": "",
+    "domain": "ietf",
+    "proof": {
+      "type": "DataIntegrityProof",
+      "verificationMethod": "did:ietf:8af13c13bfce4491aae251b10c4f4004",
+      "cryptoSuite": "Ed25519",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "b99db01b763efc54e4a4432f0177b5baa1703db1992453152a993304eb7fc3c8f66f93d8e595d2c432e7c527db3222940c382888f4b31ce0511ccf07f0b85404"
+    }
+  }
+]

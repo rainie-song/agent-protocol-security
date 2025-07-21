@@ -52,13 +52,13 @@ def get_vc(data):
     current_time = datetime.now()
 
     vc = {
-        'id': uuid.uuid4(),
+        'id': str(uuid.uuid4()),
         'type': 'VerifiableCredential',
         'issuer': idm_did['id'],
         'name': 'attributeCredential',
         'description': data.get('usage'),
-        'validFrom': current_time,
-        'validUntil': current_time + timedelta(hours=24),
+        'validFrom': str(current_time),
+        'validUntil': str(current_time + timedelta(hours=24)),
         'credentialSubject': cs,
         'relatedVC': '',
         'domain': 'ietf',
@@ -71,7 +71,7 @@ def get_vc(data):
     with open('mcp/data/idm-sk.txt', 'r') as file:
         sk = file.read()
 
-    signed_vc = sign_vc(sk, str(vc))
+    signed_vc = sign_vc(sk, str(vc)).hex()
 
     proof = {
         'type': 'DataIntegrityProof',
@@ -83,7 +83,33 @@ def get_vc(data):
 
     vc['proof'] = proof
 
+    save_vc(vc)
+
     return vc
+
+def save_vc(vc):
+    try:
+        with open('mcp/data/vc.json', 'r') as file:
+            vc_list = json.load(file)
+    except FileNotFoundError:
+        vc_list = []
+
+    vc_list.append(vc)
+
+    with open('mcp/data/vc.json', 'w') as file:
+        json.dump(vc_list, file, indent=2)
+
+
+def verify_vc(vc):
+    try:
+        with open('mcp/data/vc.json', 'r') as f:
+            vc_list = json.load(f)
+    except FileNotFoundError:
+        print('FileNotFoundError')
+        return False
+    
+    if vc in vc_list:
+        return True
 
 def read_json_to_dict(filepath):
     try:

@@ -2,6 +2,7 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 import asyncio
+import json
 from typing import Optional
 from contextlib import AsyncExitStack
 
@@ -78,6 +79,38 @@ class MCP_Client:
         tools = toolbox.tools
         print("\nConnected to server with tools:", [tool.name for tool in tools])
 
+    async def verify_vc(self):
+        print('\nVerifying VC...')
+
+        args = {
+            "vc_str": json.dumps(self.vc)
+        }
+
+        result = await self.session.call_tool(
+            "_verify_vc",
+            arguments=args
+        )
+        print('result:', result.content[0].text)
+
+        if result.content[0].text == 'success':
+            print('Authorised!')
+            authorised = True
+        else:
+            print('Unauthorised!')
+            authorised = False
+
+        return authorised
+
+    async def process_message(self):
+        authorised = await self.verify_vc()
+        if not authorised:
+            print('Process message: unauthorised')
+            return False
+        # Process message will simulate making a tool call after receiving a message that requires tool calling
+        print('\nCalling get_current_time tool')
+        result = await self.session.call_tool('get_current_time', arguments=None)
+        print('result:', result.content[0].text)
+
     async def cleanup(self):
         await self.exit_stack.aclose()
 
@@ -89,6 +122,7 @@ async def main():
 
     try:
         await client.connect_to_server(server_script_path)
+        await client.process_message()
     finally:
         await client.cleanup()
     

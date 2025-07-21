@@ -1,5 +1,6 @@
 from mcp.server.fastmcp import FastMCP
 import datetime
+import json
 
 from keys_generator import generate_raw_keys
 import idm
@@ -17,6 +18,19 @@ def get_did():
     }
     global DID
     DID = idm.get_did(data)
+
+
+@mcp.tool()
+def _verify_vc(vc_str: str):
+    vc = json.loads(vc_str)
+    
+    vc_exists = idm.verify_vc(vc)
+    if not vc_exists:
+        return 'failure'
+    
+    if vc['credentialSubject']['claim']['service'] == 'callTools':
+        return 'success'
+    return 'failure'
 
 
 # AI Tools
