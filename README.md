@@ -27,9 +27,16 @@ Create Python virtual environment inside the project.
 
 ## Installing dependencies
 
-        $ pip install "mcp[cli]"
+        $ pip install -r requirements.txt
 
-## Build MCP Server
+## Run client.py in mcp folder
+
+        $ python mcp/client.py
+
+
+## Additional information:
+
+### Build MCP Server
 
 Simple MCP server with tools:  
 https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#tools
@@ -38,7 +45,7 @@ Additional notes:
 - Transport Layer: stdio
 - Add a code line to run the server using stdio transport layer
 
-## MCP Client
+### MCP Client
 
 Simple MCP client:  
 https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients
